@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix'=> 'content'], function (){
         Route::post('create', [ContentController::class, 'create']);
         Route::post('index', [ContentController::class, 'index']);
+        Route::post('delete/{content}', [ContentController::class, 'delete']);
     });
 
 });

@@ -125,12 +125,14 @@ class ContentController extends Controller
     }
 
     public function delete(Content $content) {
+        // return $content->documents;
         if(!$content)
             return response()->json(['error' => 'content not found']);
 
         foreach ($content->documents as $document) {
             deleteOldFile("Docs/",$document->name);
         }
+
         $content->delete();
 
         return response()->json([
